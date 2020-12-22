@@ -1,5 +1,7 @@
 .App {
-  text-align: center;
+  margin: 10px;
+  border: black;
+  border-style: solid;
 }
 
 .App-logo {
@@ -35,4 +37,42 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+#bank-branches{
+  padding-left: 20px;
+}
+
+#search-bar{
+  margin: 10px;
+  padding: 5px;
+  width: 200px;
+  float: right;
+}
+
+#sel{
+  margin: 10px;
+  padding: 5px;
+  width: 200px;
+}
+.divt{
+  flex: 1;
+  
+  padding: 10px;
+}
+
+.table1, tr{
+  width: 100%;
+  border: 1px solid black;
+  border-collapse: collapse;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+tr{
+  text-align: center;
+}
+
+.t1{
+  border: 1px solid;
 }
