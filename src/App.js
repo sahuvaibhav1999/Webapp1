@@ -20,23 +20,44 @@ function App() {
         </select>  
 
         <input id="search-bar" type="text" placeholder="Search" onChange={event => {setSearchTerm(event.target.value)}}/>
+        <div>
+              <table>
+                <thead>
+
+              <tr>
+                <th>IFSC</th>
+                <th>BANK_ID</th> 
+                <th>BRANCH</th>
+                <th>ADDRESS</th>
+                <th>CITY</th> 
+                <th>DISTRICT</th>
+                <th>STATE</th> 
+                <th>BANK NAME</th>
+              </tr>
+                </thead>
         {JSONDATA.filter((val)=>{
           if (searchTerm === "") {
             return val
-          } else if (val.ifsc.toLowerCase().includes(searchTerm.toLowerCase()) || val.bank_id.toString().toLowerCase().includes(searchTerm.toLowerCase()) 
+          }
+          else if (val.city.toLowerCase().includes(searchTerm.toLowerCase())){
+            if(val.ifsc.toLowerCase().includes(searchTerm.toLowerCase()) || val.bank_id.toString().toLowerCase().includes(searchTerm.toLowerCase()) 
+            || val.branch.toLowerCase().includes(searchTerm.toLowerCase()) || val.address.toLowerCase().includes(searchTerm.toLowerCase())
+            || val.city.toLowerCase().includes(searchTerm.toLowerCase()) || val.district.toLowerCase().includes(searchTerm.toLowerCase())
+            || val.state.toLowerCase().includes(searchTerm.toLowerCase()) || val.bank_name.toLowerCase().includes(searchTerm.toLowerCase())){
+              return val
+            }
+          } 
+          else if (val.ifsc.toLowerCase().includes(searchTerm.toLowerCase()) || val.bank_id.toString().toLowerCase().includes(searchTerm.toLowerCase()) 
             || val.branch.toLowerCase().includes(searchTerm.toLowerCase()) || val.address.toLowerCase().includes(searchTerm.toLowerCase())
             || val.city.toLowerCase().includes(searchTerm.toLowerCase()) || val.district.toLowerCase().includes(searchTerm.toLowerCase())
             || val.state.toLowerCase().includes(searchTerm.toLowerCase()) || val.bank_name.toLowerCase().includes(searchTerm.toLowerCase())
           ) {
             return val
           }
-          else if (val.city.toLowerCase().includes(searchTerm.toLowerCase())){
-              return val
-          }
+          
         }).map((val, key) => {
           return (
-            <div>
-              <table class="t1">
+            
                 <tr>
                   <th>{val.ifsc}</th>
                   <th>{val.bank_id}</th>
@@ -46,31 +67,13 @@ function App() {
                   <th>{val.district}</th>
                   <th>{val.state}</th>
                   <th>{val.bank_name}</th>
-                </tr>
-              </table>
-              
-            </div>
+                </tr>           
           )
         })}
-      </div>
-      
-      <div class="divt"> 
-      <table class="table1">
-      <tr>
-        <th>IFSC</th>
-        <th>BANK_ID</th> 
-        <th>BRANCH</th>
-        <th>ADDRESS</th>
-        <th>CITY</th> 
-        <th>DISTRICT</th>
-        <th>STATE</th> 
-        <th>BANK NAME</th>
-      </tr>
-      
-      </table>
+        </table>
+              </div>
       </div>
     </div>
   );
 }
-
 export default App;
